@@ -71,20 +71,77 @@
                     <tbody>
                         <tr>
                             <td>2026-06-25</td>
-                            <td>79.5 kg</td>
+                            <td>59.5 kg</td>
                             <td><span class="badge bg-secondary">Estable</span></td>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
-                            <td>2026-06-25</td>
-                            <td>74.5 kg</td>
+                            <td>2024-06-25</td>
+                            <td>94.5 kg</td>
                             <td><span class="badge bg-secondary">Estable</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+        <div style="position: relative; max-width: 800px; margin: auto;">
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'line', // Tipo de gráfica de línea
+    data: {
+      // Fechas ordenadas cronológicamente
+      labels: ['2024-06-25', '2025-06-25', '2026-03-25', '2026-06-25 (A)', '2026-06-25 (B)'],
+      datasets: [{
+        label: 'Progreso de Peso',
+        // Pesos correspondientes en kg
+        data: [94.5, 67.5, 78.5, 74.5, 59.5],
+        
+        // Estilos de la línea
+        borderColor: '#3b82f6',          // Azul moderno
+        backgroundColor: 'rgba(59, 130, 246, 0.1)', // Sombreado suave debajo de la línea
+        borderWidth: 3,                  // Grosor de la línea
+        tension: 0.3,                    // Curvatura elegante en las uniones
+
+        // Estilos de los puntos de datos
+        pointBackgroundColor: '#ef4444', // Puntos rojos para identificar los días exactos
+        pointRadius: 6,                  // Tamaño del punto
+        pointHoverRadius: 8              // Tamaño al pasar el cursor sobre el punto
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: false, // Empieza cerca del peso mínimo para que se noten mejor los cambios
+          title: {
+            display: true,
+            text: 'Peso (kg)',
+            font: { weight: 'bold' }
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'Fecha de Registro',
+            font: { weight: 'bold' }
+          }
+        }
+      }
+    }
+  });
+</script>
             </div>
         </div>
 
